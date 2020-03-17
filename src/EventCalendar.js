@@ -84,13 +84,26 @@ export default class EventCalendar extends React.Component {
     return (
       <View style={[this.styles.container, { width }]}>
         <View style={this.styles.header}>
-          <TouchableOpacity onPress={() => this._goToPage(this.state.index - 1)}>
-            <Image source={require('./back.png')} style={this.styles.arrow} />
-          </TouchableOpacity>
-          <Text style={this.styles.headerText}>{this.state.date.format(formatHeader || 'DD MMMM YYYY')}</Text>
-          <TouchableOpacity onPress={() => this._goToPage(this.state.index + 1)}>
-            <Image source={require('./forward.png')} style={this.styles.arrow} />
-          </TouchableOpacity>
+          {this.props.today !== this.state.date.format('YYYY-MM-DD') ? (
+            <TouchableOpacity style={{ flex: 3, justifyContent: 'center', alignItems: 'center'  }} onPress={() => this._goToPage(1)}>
+              <Text numberOfLines={1} style={[this.styles.headerText, { color: '#fff', fontSize: 12 }]}>{this.props.todayText}</Text>
+            </TouchableOpacity>
+          ): <View style={{ flex: 3 }} />}
+          <View style={{ flex: 6, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', }}>
+            <TouchableOpacity onPress={() => this._goToPage(this.state.index - 1)}>
+              <Image source={require('./back.png')} style={this.styles.arrow} />
+            </TouchableOpacity>
+            <Text style={this.styles.headerText} numberOfLines={1}>{this.state.date.format(formatHeader || 'DD MMMM YYYY')}</Text>
+            <TouchableOpacity onPress={() => this._goToPage(this.state.index + 1)}>
+              <Image source={require('./forward.png')} style={this.styles.arrow} />
+            </TouchableOpacity>
+
+          </View>
+          <View style={{ flex: 3}}>
+            <TouchableOpacity style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center'  }} onPress={() => this._goToPage(1)}>
+              <Text numberOfLines={1} style={[this.styles.headerText, { color: '#fff', fontSize: 12 }]}>{this.props.availabilityText}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
         <VirtualizedList
           ref='calendar'
