@@ -1,5 +1,5 @@
 // @flow
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 
 const calendarHeight = 2400
 // const eventPaddingLeft = 4
@@ -19,19 +19,21 @@ export default function styleConstructor (
       height: calendarHeight + 10
     },
     header: {
-      paddingHorizontal: 30,
+      paddingHorizontal: 0,
       height: 50,
       borderTopWidth: 1,
       borderBottomWidth: 1,
       borderColor: '#E6E8F0',
-      backgroundColor: '#F5F5F6',
+      backgroundColor: '#210D2E',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      // justifyContent: 'space-between',
       alignItems: 'center',
       ...theme.header
     },
     headerText: {
-      fontSize: 16
+      fontSize: 16,
+      color: '#FFF',
+      fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
     },
     arrow: {
       width: 15,
@@ -40,12 +42,12 @@ export default function styleConstructor (
     },
     event: {
       position: 'absolute',
-      backgroundColor: '#F0F4FF',
+      backgroundColor: '#D1CFF9',
       opacity: 0.8,
-      borderColor: '#DDE5FD',
+      borderColor: '#D1CFF9',
       borderWidth: 1,
       borderRadius: 5,
-      paddingLeft: 4,
+      paddingLeft: 8,
       minHeight: 25,
       flex: 1,
       paddingTop: 5,
@@ -57,19 +59,23 @@ export default function styleConstructor (
     },
     eventTitle: {
       color: '#300F5C',
-      fontWeight: '800',
-      fontSize: 20,
+      fontFamily: 'JosefinSans-Bold',
+      fontSize: 14,
       minHeight: 15,
       ...theme.eventTitle
     },
     eventAddress: {
       color: '#3DB3EF',
-      fontSize: 16,
+      fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
+
+      fontSize: 14,
       flexWrap: 'wrap',
       ...theme.eventAddress
     },
     eventSummary: {
-      color: '#ABADAF',
+      color: '#615B73',
+      fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
+
       fontSize: 14,
       flexWrap: 'wrap',
       ...theme.eventSummary
@@ -77,7 +83,7 @@ export default function styleConstructor (
     eventTimes: {
       marginTop: 3,
       fontSize: 10,
-      fontWeight: 'bold',
+      fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
       color: '#615B73',
       flexWrap: 'wrap',
       ...theme.eventTimes
@@ -99,10 +105,9 @@ export default function styleConstructor (
     timeLabel: {
       position: 'absolute',
       left: 15,
-      color: 'rgb(170,170,170)',
+      color: '#FFF',
       fontSize: 10,
-      fontFamily: 'Helvetica Neue',
-      fontWeight: '500',
+      fontFamily: Platform.OS === 'ios' ? 'Josefin Sans' : 'JosefinSans-Regular',
       ...theme.timeLabel
     }
   }
