@@ -1,20 +1,22 @@
 // @flow
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
+const calendarHeight = 2400
 // const eventPaddingLeft = 4
-const leftMargin = 50 - 1;
+const leftMargin = 50 - 1
 
-export default function styleConstructor(theme = {}, calendarHeight) {
+export default function styleConstructor (
+  theme = {}
+) {
   let style = {
     container: {
       flex: 1,
-      backgroundColor: '#ffff',
-      ...theme.container,
+      backgroundColor: '#F4F4F4',
+      ...theme.container
     },
     contentStyle: {
-      backgroundColor: '#ffff',
-      height: calendarHeight + 10,
-      ...theme.contentStyle,
+      backgroundColor: '#F4F4F4',
+      height: calendarHeight + 10
     },
     header: {
       paddingHorizontal: 30,
@@ -25,26 +27,16 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       backgroundColor: '#F5F5F6',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      alignItems: 'stretch',
-      ...theme.header,
-    },
-    headerTextContainer: {
-      justifyContent: 'center',
+      alignItems: 'center',
+      ...theme.header
     },
     headerText: {
-      fontSize: 16,
-      ...theme.headerText,
+      fontSize: 16
     },
     arrow: {
       width: 15,
       height: 15,
-      resizeMode: 'contain',
-    },
-    arrowButton: {
-      width: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-      ...theme.arrowButton,
+      resizeMode: 'contain'
     },
     event: {
       position: 'absolute',
@@ -61,19 +53,26 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       flexDirection: 'column',
       alignItems: 'flex-start',
       overflow: 'hidden',
-      ...theme.event,
+      ...theme.event
     },
     eventTitle: {
-      color: '#615B73',
-      fontWeight: '600',
+      color: '#300F5C',
+      fontWeight: '800',
+      fontSize: 20,
       minHeight: 15,
-      ...theme.eventTitle,
+      ...theme.eventTitle
+    },
+    eventAddress: {
+      color: '#3DB3EF',
+      fontSize: 16,
+      flexWrap: 'wrap',
+      ...theme.eventAddress
     },
     eventSummary: {
-      color: '#615B73',
-      fontSize: 12,
+      color: '#ABADAF',
+      fontSize: 14,
       flexWrap: 'wrap',
-      ...theme.eventSummary,
+      ...theme.eventSummary
     },
     eventTimes: {
       marginTop: 3,
@@ -81,31 +80,31 @@ export default function styleConstructor(theme = {}, calendarHeight) {
       fontWeight: 'bold',
       color: '#615B73',
       flexWrap: 'wrap',
-      ...theme.eventTimes,
+      ...theme.eventTimes
     },
     line: {
-      height: 1,
+      height: 0,
       position: 'absolute',
       left: leftMargin,
       backgroundColor: 'rgb(216,216,216)',
-      ...theme.line,
+      ...theme.line
     },
     lineNow: {
       height: 1,
       position: 'absolute',
       left: leftMargin,
       backgroundColor: 'red',
-      ...theme.lineNow,
+      ...theme.line
     },
     timeLabel: {
       position: 'absolute',
       left: 15,
       color: 'rgb(170,170,170)',
       fontSize: 10,
-      fontFamily: Platform.OS === 'ios' ? 'Helvetica Neue' : 'Roboto',
+      fontFamily: 'Helvetica Neue',
       fontWeight: '500',
-      ...theme.timeLabel,
-    },
-  };
-  return StyleSheet.create(style);
+      ...theme.timeLabel
+    }
+  }
+  return StyleSheet.create(style)
 }
