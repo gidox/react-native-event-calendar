@@ -90,7 +90,7 @@ export default class DayView extends React.PureComponent {
 
         <Text
           key={`timeLabel${i}`}
-          style={[styles.timeLabel, { top: offset * i - 6, width: 40, paddingLeft: 3,  backgroundColor: '#210D2E', borderTopRightRadius: 20, borderBottomRightRadius: 20 }]}
+          style={[styles.timeLabel, { top: offset * i - 6, width: 40, paddingLeft: 3,  backgroundColor: '#210D2E', borderTopRightRadius: 10, borderBottomRightRadius: 10 }]}
         >
           {timeText}
         </Text>,
@@ -150,7 +150,7 @@ export default class DayView extends React.PureComponent {
               <Text numberOfLines={1} style={styles.eventTitle}>{event.title || 'Event'}</Text>
               {numberOfLines > 1
                 ? <Text
-                  numberOfLines={numberOfLines - 1}
+                  numberOfLines={1}
                   style={[styles.eventSummary]}
                 >
                   {event.summary || ' '}
@@ -158,9 +158,9 @@ export default class DayView extends React.PureComponent {
                 : null}
               <Text numberOfLines={1} style={styles.eventAddress}>{event.address || ' '}</Text>
 
-              {numberOfLines > 2
+              {/* {numberOfLines > 2
                 ? <Text style={styles.eventTimes} numberOfLines={1}>{moment(event.start).format(formatTime)} - {moment(event.end).format(formatTime)}</Text>
-                : null}
+                : null} */}
             </TouchableOpacity>
           )}
         </View>
